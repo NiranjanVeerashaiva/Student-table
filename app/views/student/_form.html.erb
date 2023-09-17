@@ -1,0 +1,17 @@
+<h1>Add user</h1>
+<%= form_with model: student do |form| %>
+<% if form.object.errors.any? %>
+<% form.object.errors.full_messages.each do |message| %>
+<div><%= message %></div>
+<% end %>
+<% end %>
+<div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+</div>
+<div>
+    <%= form.label :place %>
+    <%= form.text_area :place %>
+</div>
+<%= form.button %>
+<% end %>
