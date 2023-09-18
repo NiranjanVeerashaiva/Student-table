@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: rails_development
+  database: table_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -79,8 +79,8 @@ development:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-# production:
-#   <<: *default
-#   database: table_production
-#   username: table
-#   password: <%= ENV["TABLE_DATABASE_PASSWORD"] %>
+production:
+  <<: *default
+  database: table_production
+  username: table
+  password: <%= ENV["TABLE_DATABASE_PASSWORD"] %>
