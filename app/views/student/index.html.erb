@@ -1,7 +1,15 @@
 <h1>Student Table</h1>
 <% @students.each do |student| %>
 <div>
-    <h1><%= link_to  student.name, student %></h1>
-    <h3><%= student.place%></h3>
+    <div  class="flex">
+    <h1 class="w-40 my-0"><%= link_to  student.name, student %></h1>
+     <% if student.draft? %>
+        <div class="p-1 rounded bg-gray-100 text-gray-900 w-40 h-10">Draft</div>
+    <% elsif student.scheduled? %>
+        <div class="p-1 rounded bg-blue-100 text-blue-900 w-40 h-10">Scheduled</div>
+    <% end %>
+    </div>
+    <h3 class="mb-10"><%= student.place %></h3>
+    <hr>
 </div>
 <% end %>

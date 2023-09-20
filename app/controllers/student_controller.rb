@@ -1,12 +1,10 @@
 class StudentController<ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :set_student, except: [:index, :new, :create]
     def index
-        @students=Student.all
-    end
-    def show
-        @student=Student.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-        redirect_to "/"
+        @students= user_signed_in? ? Student.sorted : Student.publieshed.sorted
+    end 
+    def show 
     end
     def new
         @student=Student.new
@@ -20,10 +18,8 @@ class StudentController<ApplicationController
         end
     end
     def edit
-        @student=Student.find(params[:id])
     end
     def update
-        @student=Student.find(params[:id])
         if @student.update(student_params)
             redirect_to @student
         else
@@ -31,11 +27,15 @@ class StudentController<ApplicationController
         end
     end
     def delete
-        @student=Student.find(params[:id])
         @student.destroy
         redirect_to "/"
     end
     def student_params
-        params.require(:student).permit(:name, :place)
+        params.require(:student).permit(:name, :place, :publieshed_at)
+    end
+    def set_student
+        @student= user_signed_in? ? Student.find(params[:id]) : Student.publieshed.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+        redirect_to "/"
     end
 end
