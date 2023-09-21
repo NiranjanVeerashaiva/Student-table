@@ -31,7 +31,7 @@ class StudentController<ApplicationController
         redirect_to "/"
     end
     def student_params
-        params.require(:student).permit(:name, :place, :publieshed_at)
+        params.require(:student).permit(:name, :content, :publieshed_at)
     end
     def set_student
         @student= user_signed_in? ? Student.find(params[:id]) : Student.publieshed.find(params[:id])

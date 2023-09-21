@@ -1,6 +1,7 @@
 class Student < ApplicationRecord
+    has_rich_text :content
     validates :name, presence: true
-    validates :place, presence: true
+    validates :content, presence: true
 
     scope :sorted, ->{ order(arel_table[:publieshed_at].desc.nulls_last).order(updated_at: :desc) } 
     scope :draft, -> { where(publieshed_at:nil) }
