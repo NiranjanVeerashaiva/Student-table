@@ -1,0 +1,4 @@
+<h1> <%= @student.name %></h1>
+<h3><%= @student.content %></h3>
+<%= image_tag @student.cover_image if @student.cover_image.present? %>
+<%= link_to "edit", edit_student_path(@student) if user_signed_in? %>
