@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+    has_one_attached :cover_image
     has_rich_text :content
     validates :name, presence: true
     validates :content, presence: true
