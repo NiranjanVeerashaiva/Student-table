@@ -74,3 +74,4 @@ end
 gem "devise", "~> 4.9"
 
 gem "tailwindcss-rails", "~> 2.0"
+gem 'rspec-rails', '~>4.0.0.beta2'
